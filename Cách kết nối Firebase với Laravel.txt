@@ -7,7 +7,7 @@ Cách kết nối Firebase với Laravel
 - Vào VS Code chạy các dòng lệnh sau:
 	+ Nhập trong Terminal: composer require kreait/laravel-firebase
 	+ Sau đó vào mục config\app.php và thêm dòng lệnh này trong phần 'providers'
-		composer require kreait/laravel-firebase
+		Kreait\Laravel\Firebase\ServiceProvider::class
 	+ Nhập tiếp trong Terminal: 
 		php artisan vendor:publish --provider="Kreait\Laravel\Firebase\ServiceProvider" --tag=config
 	+ Dán 2 dòng code này vào file .env
