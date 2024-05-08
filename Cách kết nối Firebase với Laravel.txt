@@ -1,0 +1,30 @@
+Cách kết nối Firebase với Laravel
+- Vào đường dẫn C:\xampp\php và mở tệp php.ini
+- Tìm kiếm sodium => sẽ thấy dòng lệnh ;extension=sodium
+- Xoá dấu ; ở trước dòng đó và lưu lại
+- Mở Xampp và chạy Apache
+
+- Vào VS Code chạy các dòng lệnh sau:
+	+ Nhập trong Terminal: composer require kreait/laravel-firebase
+	+ Sau đó vào mục config\app.php và thêm dòng lệnh này trong phần 'providers'
+		composer require kreait/laravel-firebase
+	+ Nhập tiếp trong Terminal: 
+		php artisan vendor:publish --provider="Kreait\Laravel\Firebase\ServiceProvider" --tag=config
+	+ Dán 2 dòng code này vào file .env
+		FIREBASE_CREDENTIALS=""
+		FIREBASE_DATABASE_URL=""
+
+- Vào trang firebase chứa dự án của mình:
+	+ Chọn biểu tượng Setting bên cạnh "Project Overview"
+	+ Project Settings -> Service accounts -> Chọn Node.js -> Generate new private key
+	+ Lưu về folder chứa dự án Laravel của mình
+	+ Copy tên file vừa được tải về (bao gồm cả tên và đuôi mở rộng (.json))
+
+- Vào lại VS Code, ở file .env
+	+ Dán tên vừa copy vào trong dấu "" của phần FIREBASE_CREDENTIALS
+	+ Copy đường dẫn trong Realtime Database của trang Firebase và dán vào trong dấu "" của phần FIREBASE_DATABASE_URL
+
+
+## LƯU Ý ## 
+- Ở những file Controller, khi gọi Hàm Database cho Firebase thì phải dùng thư viện
+	use Kreait\Firebase\Contract\Database;
